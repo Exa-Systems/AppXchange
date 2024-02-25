@@ -287,20 +287,20 @@
 </head>
 <body>
   <div class="header">
-      <h1><a style="text-decoration: none;color: white;" href="https://appxchange.exa-team.repl.co/">AppXchange</a></h1>
-      <div style=" cursor: pointer;" onclick="location.href='account';" class="profile-sidebar">
+      <h1><a style="text-decoration: none;color: white;" href="https://appxchange.onrender.com/">AppXchange</a></h1>
+      <div style=" cursor: pointer;" onclick="location.href='/account';" class="profile-sidebar">
           <div class="profile-avatar"></div>
           <p style="color: white;" id="username">Register</p>
       </div>
   </div>
   <div class="select">
-    <input onclick="location.href='https://appxchange.exa-team.repl.co/';" type="button" value="File Transfer"></input>
+    <input onclick="location.href='https://appxchange.onrender.com/';" type="button" value="File Transfer"></input>
     <input class="first" type="button" value="Apps"></input>
-    <input onclick="location.href='https://appxchange.exa-team.repl.co/games';" type="button" value="Games"></input>
+    <input onclick="location.href='/games';" type="button" value="Games"></input>
   </div>
     <div id="container">
         <div id="header">
-            <img id="logo" src="https://appxchange.exa-team.repl.co/static/logo/{{ logo }}" alt="프로그램 로고">
+            <img id="logo" src="/static/logo/{{ logo }}" alt="프로그램 로고">
             <div id="info">
                 <h1>{{ appname }}</h1>
                 <div class="rate">
@@ -315,8 +315,8 @@
 
       <div class="image-container">
         
-          <img class="image" src="https://appxchange.exa-team.repl.co/static/represent/{{ image }}_1.png" alt="이미지 1">
-          <img class="image" src="https://appxchange.exa-team.repl.co/static/represent/{{ image }}_2.png" alt="이미지 2">
+          <img class="image" src="/static/represent/{{ image }}_1.png" alt="이미지 1">
+          <img class="image" src="/static/represent/{{ image }}_2.png" alt="이미지 2">
 
           <div class="btn btn-left" onclick="changeImage(-1)">&#8249;</div>
           <div class="btn btn-right" onclick="changeImage(1)">&#8250;</div>
