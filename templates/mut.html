@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>AppExchange</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        .profile-sidebar {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #007bff;
+            margin-right: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #FFF;
+        }
+        h2, h3, p{
+            text-align: center;
+            
+            color: #333;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+        }
+
+        .btn-upload, .btn-download {
+            width: 100px;
+            height: 40px; /* Set the height to your desired value */
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .btn-file {
+            width: auto;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .btn-upload {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-file:hover, .btn-upload:hover {
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #007bff;
+        }
+
+        .btn-download {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .btn-download:hover {
+            background-color: #1e7e34;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20vh; /* Adjust the height to your preference */
+            flex-direction: column;
+        }
+
+        #codeinput, #file-upload {
+            width: 250px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            height: 20px; /* Set the height to match the buttons' height */
+        }
+
+        #upload-form, #download-form {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>AppExchange</h1>
+    <div class="profile-sidebar">
+        <div class="profile-avatar"></div>
+        <span>App'E'xchange</span>
+    </div>
+</div>
+  
+<p>Hi. We are getting an unusually high volume of complaints saying that the title is wrong. It was AppExchange all the time, not AppXchange. Seems like a weird mandella effect thing.</p>
+
+<div class="form-container">
+    <form id="upload-form" action="/save" method="post" enctype="multipart/form-data" class="form-group">
+        <input class="btn btn-file" type="file" name="file" id="file-upload">
+        <input class="btn btn-upload" type="submit" value="Upload">
+    </form>
+
+    <form id="download-form" action="/files/download" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" class="form-group">
+        <input placeholder="Enter file code" id="codeinput" name="code" type="text"/>
+        <input class="btn btn-download" type="submit" value="Download"/>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        const code = document.getElementById('codeinput').value;
+        if (code.trim() === "") {
+            alert("Please enter a valid file code.");
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>

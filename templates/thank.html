@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>AppXchange</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        .profile-sidebar {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #007bff;
+            margin-right: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #FFF;
+        }
+        h2, h3, p{
+            text-align: center;
+            
+            color: #333;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+        }
+
+        .btn-upload, .btn-download {
+            width: 100px;
+            height: 40px; /* Set the height to your desired value */
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .btn-file {
+            width: auto;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .btn-upload {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-file:hover, .btn-upload:hover {
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #007bff;
+        }
+
+        .btn-download {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .btn-download:hover {
+            background-color: #1e7e34;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20vh; /* Adjust the height to your preference */
+            flex-direction: column;
+        }
+
+        #codeinput, #file-upload {
+            width: 250px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            height: 20px; /* Set the height to match the buttons' height */
+        }
+
+        #upload-form, #download-form {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1><a style="text-decoration: none;color: white;" href="https://appxchange.exa-team.repl.co/">AppXchange</a></h1>
+    <div onclick="location.href='signup';" class="profile-sidebar">
+        <div class="profile-avatar"></div>
+        <span>{{ name1 }}</span>
+    </div>
+</div>
+  
+<h1 style="color: black;font-size:35pt;margin-top: 50px;">{{ why }} Successful</h1>
+<h3><a href="files/serve/EXACOOL">Try our new app experience!</a></h3>
+<h3><a href="https://appxchange.exa-team.repl.co">Go to home</a></h3>
+
+<script>
+  var username = "{{ name2 }}";
+  localStorage.setItem('name', username);
+</script>
+</body>
+</html>

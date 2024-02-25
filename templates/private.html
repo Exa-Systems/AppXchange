@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>AppXchange</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        .profile-sidebar {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #007bff;
+            margin-right: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #FFF;
+        }
+        h2, h3, p{
+            text-align: center;
+
+            color: #333;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+        }
+
+        .btn-upload, .btn-download {
+            width: 100px;
+            height: 40px; /* Set the height to your desired value */
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .btn-file {
+            width: auto;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .btn-upload {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-file:hover, .btn-upload:hover {
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #007bff;
+        }
+
+        .btn-download {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .btn-download:hover {
+            background-color: #1e7e34;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20vh; /* Adjust the height to your preference */
+            flex-direction: column;
+        }
+
+        #codeinput, #file-upload {
+            width: 250px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            height: 20px; /* Set the height to match the buttons' height */
+        }
+
+        #upload-form, #download-form {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin: 0 10px;
+        }
+      .select input {
+          border-radius: 20px;
+          padding: 10px;
+          color: #000000;
+          cursor: pointer;
+          font-size: 16px;
+          transition: background-color 0.3s;
+          border-width: 2px;
+          border-color: #3498db;
+          background-color: white;
+          -webkit-appearance: none; /* 크롬 및 사파리용 */
+          -moz-appearance: none; /* 파이어폭스용 */
+          appearance: none; /* 표준 속성 */
+          border: 2px solid #3498db;
+          padding: 8px 15px;
+          cursor: pointer;
+          outline: none;
+        }
+      .select .first {
+          background-color: #3498db;
+          color: white;
+      }
+      .select {
+        margin-top: 5px;
+        margin-left: 5px;
+      }
+
+      @font-face {
+        font-family: bm;
+        src: url(../font/bamin/BMJUA_ttf.ttf);
+      }
+
+      * {
+        box-sizing: border-box;
+        font-family: bm;
+      }
+
+
+      form {
+        background-color: #007acc;
+        padding: 30px 40px;
+        text-align: center;
+      }
+
+      input {
+        border: none;
+        width: 350px;
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      .addBtn {
+        padding: 10px;
+        width: 70px;
+        border: none;
+        background-color: #fff;
+        box-shadow: 1px 2px 4px #167dae;
+        color: #222;
+        text-align: center;
+        font-size: 14px;
+        cursor: pointer;
+        margin-left: 10px;
+      }
+
+      .addBtn:hover {
+        background-color: black;
+        color: white;
+      }
+
+      /* ul li 로 아이템 리스트 작업 */
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      ul li {
+        cursor: pointer;
+        position: relative;
+        padding: 12px 8px 12px 40px;
+        background-color: #eee;
+        font-size: 18px;
+      }
+
+      ul li:nth-child(odd) {
+        background-color: #f9f9f9;
+      }
+
+      ul li:hover {
+        background-color: #ddd;
+      }
+
+      .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 12px 16px;
+      }
+
+      .close:hover {
+        background-color: #007acc;
+        color: white;
+      }
+      /* ul li 로 아이템 리스트 작업 끝 */
+
+      /* table 로 아이템 리스트 작업 */
+      table {
+        border-collapse: collapse;
+        /* border: 1px solid #000; */
+        width: 25%;
+        font-size: 25px;
+        background-color: #f9f9f9;
+      }
+
+      tr:hover {
+        background-color: black;
+        color: white;
+      }
+
+      tr:nth-child(2n + 1) {
+        background-color: #e9e9e9;
+      }
+
+      tr:nth-child(2n + 1):hover {
+        background-color: black;
+      }
+
+      .i {
+        width: 95%;
+        padding-left: 10px;
+      }
+
+      .x:hover {
+        background-color: #007acc;
+        color: white;
+      }
+
+      .x {
+        text-align: center;
+        cursor: pointer;
+        padding-top: 15px;
+      }
+      /* table 로 아이템 리스트 작업 끝 */
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1><a style="text-decoration: none;color: white;" href="https://appxchange.exa-team.repl.co/">AppXchange</a></h1>
+    <div style=" cursor: pointer;" onclick="location.href='account';" class="profile-sidebar">
+        <div class="profile-avatar"></div>
+        <p style="color: white;" id="username">Register</p>
+    </div>
+</div>
+<div class="select">
+  <input onclick="location.href='https://appxchange.exa-team.repl.co/';" type="button" value="File Transfer"></input>
+  <input class="first" type="button" value="FT Private"></input>
+  <input type="button" onclick="location.href='https://appxchange.exa-team.repl.co/apps';" value="Apps"></input>
+  <input type="button" onclick="location.href='https://appxchange.exa-team.repl.co/games';" value="Games"></input>
+</div>
+  <div id="hidden_form_container" style="display:none;"></div>
+<p><i>Try our new <a href="https://appxchange.exa-team.repl.co/description/EXACOOL">App Experience</a>!</i><br>You can also download the app through the code <b>"EXACOOL"</b></p>
+
+<div class="form-container">
+    <form id="sendselect-form" method="post" enctype="multipart/form-data">
+      <h2>sending destination select</h2>
+      <form>
+        <!-- <input hidden="hidden" /> -->
+        <input type="text" id="item" autofocus />
+        <button type="button" id="add" class="addBtn">add</button>
+        <button type="button" id="remove" class="removeBtn">remove</button>
+      </form>
+      <div id="item_list"></div>
+    </form>
+  
+    <form id="upload-form" action="/save" method="post" enctype="multipart/form-data" class="form-group">
+        <input class="btn btn-file" type="file" name="file" id="file-upload">
+        <input class="btn btn-upload" type="submit" value="Upload">
+    </form>
+
+    <form id="download-form" action="/files/download" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" class="form-group">
+        <input placeholder="Enter private file code" id="codeinput" name="code" type="text"/>
+        <input class="btn btn-download" type="submit" value="Download"/>
+    </form>
+</div>
+
+
+
+<script>
+  let itemList = [];/*누가 여기다 사용자 계정 리스트 좀 연결해줘요*/
+  let addBtn = document.querySelector("#add");
+  addBtn.addEventListener("click", addList);
+
+  document
+    .querySelector("#item")
+    .addEventListener("keypress", function (e) {
+      if (e.keyCode === 13) {
+        e.preventDefault();
+        addList();
+      }
+    });
+
+
+  function showList() {
+
+    let list = "<table>";
+    for (let i = 0; i < itemList.length; i++) {
+      list += `<tr>
+        <td class="i">${itemList[i]}</td>
+        <td class="x" id="${i}">X</td>
+        </tr>`;
+    }
+    list += "</table>";
+
+
+    document.querySelector("#item_list").innerHTML = list;
+
+
+    let xMarks = document.querySelectorAll(".x");
+    for (let i = 0; i < xMarks.length; i++) {
+
+      xMarks[i].addEventListener("click", removeOne);
+    }
+  }
+
+
+  function removeOne() {
+    let id = this.getAttribute("id");
+    itemList.splice(id, 1);
+    showList();
+  }
+  
+    function validateForm() {
+        const code = document.getElementById('codeinput').value;
+        if (code.trim() === "") {
+            alert("Please enter a valid file code.");
+            return false;
+        }
+        return true;
+    }
+
+    function downloadFile (filecode) {
+      var theForm, newInput1, newInput2;
+      // Start by creating a <form>
+      theForm = document.createElement('form');
+      theForm.action = '/files/download';
+      theForm.method = 'post';
+      // Next create the <input>s in the form and give them names and values
+      newInput1 = document.createElement('input');
+      newInput1.type = 'hidden';
+      newInput1.name = 'code';
+      newInput1.value = filecode;
+      // Now put everything together...
+      theForm.appendChild(newInput1);
+      // ...and it to the DOM...
+      document.getElementById('hidden_form_container').appendChild(theForm);
+      // ...and submit it
+      theForm.submit();
+    }
+</script>
+<script>
+  var message = localStorage.getItem('name');
+  const accountname = document.getElementById('username');
+  if (message) {
+    accountname.textContent = message;
+  }
+</script>
+</body>
+</html>

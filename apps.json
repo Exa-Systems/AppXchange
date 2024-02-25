@@ -1,0 +1,32 @@
+[
+    {
+        "name": "AppXchange Source",
+        "company": "EXA Team",
+        "image": "banner/appxchange_desktop.png",
+        "representname": "appxchange",
+        "logo": "appxchange_logo.png",
+        "rating": 5.0,
+        "code": "EXACOOL",
+        "description": "AppXchange is a service created to easily share and download files. The images are for a beta version of the app. The app is still in development and may have bugs. If you find any bugs, please report them"
+    },
+    {
+        "name": "Atomica",
+        "company": "NeuroSource",
+        "image": "banner/!!!!!!!!!!!!!!!!!!!!bg.png",
+        "logo": "Iconfix.png",
+        "rating": 4.6,
+        "code": "JOQPOQ",
+        "description": "Introducing Atomica. Atomica is a small indie game about merging elements into heavier elements. Atoms with a simmilar CPK colors merge together. Hold the mouse button to control the atom, and let go to release. \n\n This is an alpha version of the game, and there is a more recent version. This game will be updated soon.",
+        "representname": "atomica"
+    },
+    {
+        "name": "AppXchange MacOS",
+        "company": "NeuroSource",
+        "image": "banner/appxchange_mac.png",
+        "representname": "appxmac",
+        "logo": "appxchange_logo.png",
+        "rating": 5.0,
+        "code": "DEYOJR",
+        "description": "This is a macOS app for AppXchange. It is a compiled version of 'AppXchange Source'"
+    }
+]

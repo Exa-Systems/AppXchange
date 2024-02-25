@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppXchange</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        #container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        #logo {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        #info {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        #downloadButton {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #version {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        #carousel {
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        #slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        #description {
+            margin-top: 20px;
+        }
+
+        #companyInfo {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #companyButton {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          margin: 0;
+          padding: 0;
+      }
+
+      .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: #333;
+          color: #fff;
+          padding: 10px 20px;
+      }
+
+      .profile-sidebar {
+          display: flex;
+          align-items: center;
+      }
+
+      .profile-avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: #007bff;
+          margin-right: 10px;
+      }
+
+      h1 {
+          margin-top: 20px;
+          color: #FFF;
+      }
+      h2, h3, p{
+
+          color: #333;
+      }
+
+      .btn {
+          display: inline-block;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+      }
+
+      .btn-upload, .btn-download {
+          width: 100px;
+          height: 40px; /* Set the height to your desired value */
+          padding: 10px;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          margin-bottom: 10px;
+      }
+
+      .btn-file {
+          width: auto;
+          padding: 10px;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          margin-bottom: 10px;
+      }
+
+      .btn-upload {
+          background-color: #007bff;
+          color: #fff;
+      }
+
+      .btn-file:hover, .btn-upload:hover {
+          background-color: #007bff;
+          color: #fff;
+          border: 1px solid #007bff;
+      }
+
+      .btn-download {
+          background-color: #28a745;
+          color: #fff;
+      }
+
+      .btn-download:hover {
+          background-color: #1e7e34;
+      }
+
+      .form-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 20vh; /* Adjust the height to your preference */
+          flex-direction: column;
+      }
+
+      #codeinput, #file-upload {
+          width: 250px;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          height: 20px; /* Set the height to match the buttons' height */
+      }
+
+      #upload-form, #download-form {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+      }
+
+      .form-group {
+          margin: 0 10px;
+      }
+      .select input {
+          border-radius: 20px;
+          padding: 10px;
+          color: #000000;
+          cursor: pointer;
+          font-size: 16px;
+          transition: background-color 0.3s;
+          border-width: 2px;
+          border-color: #3498db;
+          background-color: white;
+          -webkit-appearance: none; /* 크롬 및 사파리용 */
+          -moz-appearance: none; /* 파이어폭스용 */
+          appearance: none; /* 표준 속성 */
+          border: 2px solid #3498db;
+          padding: 8px 15px;
+          cursor: pointer;
+          outline: none;
+        }
+      .select .first {
+          background-color: #3498db;
+          color: white;
+      }
+      .select {
+        margin-top: 5px;
+        margin-left: 5px;
+      }
+      #info h1 {
+        color: black;
+      }
+      .rate{background: url(https://aldo814.github.io/jobcloud/html/images/user/star_bg02.png) no-repeat;width: 121px;height: 20px;position: relative;}
+      .rate span{position: absolute;background: url(https://aldo814.github.io/jobcloud/html/images/user/star02.png);width: auto;height: 20px;}
+      .image-container {
+          position: relative;
+      }
+      .image {
+          display: none;
+          max-width: 100%;
+          height: auto;
+      }
+      .btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 50px;
+          height: 50px;
+          background-color: #ccc;
+          border-radius: 100%;
+          text-align: center;
+          line-height: 50px;
+          font-size: 24px;
+          cursor: pointer;
+      }
+      .btn-left {
+          left: 10px;
+      }
+      .btn-right {
+          right: 10px;
+      }
+      #logo {
+        border-radius: 10pt;
+      }
+      .starpoint_wrap{display:inline-block;}
+      .starpoint_box{position:relative;background:url(https://ido-archive.github.io/svc/etc/element/img/sp_star.png) 0 0 no-repeat;font-size:0;}
+      .starpoint_box .starpoint_bg{display:block;position:absolute;top:0;left:0;height:18px;background:url(https://ido-archive.github.io/svc/etc/element/img/sp_star.png) 0 -20px no-repeat;pointer-events:none;}
+      .starpoint_box .label_star{display:inline-block;width:10px;height:18px;box-sizing:border-box;}
+      .starpoint_box .star_radio{opacity:0;width:0;height:0;position:absolute;}
+      .starpoint_box .star_radio:nth-of-type(1):hover ~ .starpoint_bg,
+      .starpoint_box .star_radio:nth-of-type(1):checked ~ .starpoint_bg{width:10%;}
+      .starpoint_box .star_radio:nth-of-type(2):hover ~ .starpoint_bg,
+      .starpoint_box .star_radio:nth-of-type(2):checked ~ .starpoint_bg{width:20%;}
+      .starpoint_box .star_radio:nth-of-type(3):hover ~ .starpoint_bg,
+      .starpoint_box .star_radio:nth-of-type(3):checked ~ .starpoint_bg{width:30%;}
+      .starpoint_box .star_radio:nth-of-type(4):hover ~ .starpoint_bg,
+      .starpoint_box .star_radio:nth-of-type(4):checked ~ .starpoint_bg{width:40%;}
+      .starpoint_box .star_radio:nth-of-type(5):hover ~ .starpoint_bg,
+      .starpoint_box .star_radio:nth-of-type(5):checked ~ .starpoint_bg{width:50%;}
+      .starpoint_box .star_radio:nth-of-type(6):hover ~ .starpoint_bg,
+      .starpoint_box .star_radio:nth-of-type(6):checked ~ .starpoint_bg{width:60%;}
+      .starpoint_box .star_radio:nth-of-type(7):hover ~ .starpoint_bg,
+      .starpoint_box .star_radio:nth-of-type(7):checked ~ .starpoint_bg{width:70%;}
+      .starpoint_box .star_radio:nth-of-type(8):hover ~ .starpoint_bg,
+      .starpoint_box .star_radio:nth-of-type(8):checked ~ .starpoint_bg{width:80%;}
+      .starpoint_box .star_radio:nth-of-type(9):hover ~ .starpoint_bg,
+      .starpoint_box .star_radio:nth-of-type(9):checked ~ .starpoint_bg{width:90%;}
+      .starpoint_box .star_radio:nth-of-type(10):hover ~ .starpoint_bg,
+      .starpoint_box .star_radio:nth-of-type(10):checked ~ .starpoint_bg{width:100%;}
+
+      .blind{position:absolute;clip:rect(0 0 0 0);margin:-1px;width:1px;height: 1px;overflow:hidden;}
+    </style>
+</head>
+<body>
+  <div class="header">
+      <h1><a style="text-decoration: none;color: white;" href="https://appxchange.exa-team.repl.co/">AppXchange</a></h1>
+      <div style=" cursor: pointer;" onclick="location.href='account';" class="profile-sidebar">
+          <div class="profile-avatar"></div>
+          <p style="color: white;" id="username">Register</p>
+      </div>
+  </div>
+  <div class="select">
+    <input onclick="location.href='https://appxchange.exa-team.repl.co/';" type="button" value="File Transfer"></input>
+    <input class="first" type="button" value="Apps"></input>
+    <input onclick="location.href='https://appxchange.exa-team.repl.co/games';" type="button" value="Games"></input>
+  </div>
+    <div id="container">
+        <div id="header">
+            <img id="logo" src="https://appxchange.exa-team.repl.co/static/logo/{{ logo }}" alt="프로그램 로고">
+            <div id="info">
+                <h1>{{ appname }}</h1>
+                <div class="rate">
+                  <span style="width: {{ rating }}%"></span>
+                </div>
+              
+            </div>
+            <button id="downloadButton" onclick="downloadFile('{{ appcode }}');">Download</button>
+            <div id="hidden_form_container" style="display:none;"></div>
+          
+        </div>
+
+      <div class="image-container">
+        
+          <img class="image" src="https://appxchange.exa-team.repl.co/static/represent/{{ image }}_1.png" alt="이미지 1">
+          <img class="image" src="https://appxchange.exa-team.repl.co/static/represent/{{ image }}_2.png" alt="이미지 2">
+
+          <div class="btn btn-left" onclick="changeImage(-1)">&#8249;</div>
+          <div class="btn btn-right" onclick="changeImage(1)">&#8250;</div>
+      </div>
+        <h2>Description</h2>
+        <div id="description">
+            <p>{{ explain }}</p>
+        </div>
+        <!--
+        <div id="companyInfo">
+            <p>회사 이름</p>
+            <a id="companyButton" href="http://www.companywebsite.com" target="_blank">회사 홈페이지 바로가기</a>
+        </div>
+        -->
+      <center>
+        <h4>If you like the app, please rate it</h4>
+        <div class="starpoint_wrap">
+          <div class="starpoint_box">
+            <label for="starpoint_1" class="label_star" title="0.5"><span class="blind">0.5점</span></label>
+            <label for="starpoint_2" class="label_star" title="1"><span class="blind">1점</span></label>
+            <label for="starpoint_3" class="label_star" title="1.5"><span class="blind">1.5점</span></label>
+            <label for="starpoint_4" class="label_star" title="2"><span class="blind">2점</span></label>
+            <label for="starpoint_5" class="label_star" title="2.5"><span class="blind">2.5점</span></label>
+            <label for="starpoint_6" class="label_star" title="3"><span class="blind">3점</span></label>
+            <label for="starpoint_7" class="label_star" title="3.5"><span class="blind">3.5점</span></label>
+            <label for="starpoint_8" class="label_star" title="4"><span class="blind">4점</span></label>
+            <label for="starpoint_9" class="label_star" title="4.5"><span class="blind">4.5점</span></label>
+            <label for="starpoint_10" class="label_star" title="5"><span class="blind">5점</span></label>
+            <input type="radio" name="starpoint" id="starpoint_1" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_2" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_3" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_4" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_5" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_6" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_7" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_8" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_9" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_10" class="star_radio">
+            <span class="starpoint_bg"></span>
+          </div>
+        </div>
+        <div style="margin-top: 10px;">
+          <button id="downloadButton" onclick="rate();">Rate</button>
+        </div>
+      </center>
+    </div>
+
+    <script>
+      let currentImageIndex = 0;
+      const images = document.getElementsByClassName('image');
+      images[currentImageIndex].style.display = 'block';
+      function changeImage(n) {
+          currentImageIndex += n;
+
+          if (currentImageIndex < 0) {
+              currentImageIndex = images.length - 1;
+          } else if (currentImageIndex >= images.length) {
+              currentImageIndex = 0;
+          }
+
+          for (let i = 0; i < images.length; i++) {
+              images[i].style.display = 'none';
+          }
+
+          images[currentImageIndex].style.display = 'block';
+      }
+      function downloadFile (filecode) {
+        var theForm, newInput1, newInput2;
+        // Start by creating a <form>
+        theForm = document.createElement('form');
+        theForm.action = '/files/download';
+        theForm.method = 'post';
+        // Next create the <input>s in the form and give them names and values
+        newInput1 = document.createElement('input');
+        newInput1.type = 'hidden';
+        newInput1.name = 'code';
+        newInput1.value = filecode;
+        // Now put everything together...
+        theForm.appendChild(newInput1);
+        // ...and it to the DOM...
+        document.getElementById('hidden_form_container').appendChild(theForm);
+        // ...and submit it
+        theForm.submit();
+      }
+    </script>
+    <script>
+      var message = localStorage.getItem('name');
+      const accountname = document.getElementById('username');
+      if (message) {
+        accountname.textContent = message;
+      }
+
+      function rate() {
+        const div = document.getElementsByClassName('starpoint_bg')[0];
+        let rate = div.offsetWidth / 20
+        fetch('https://appxchange.exa-team.repl.co/rate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'rating' : rate,
+            'code' : "{{ appcode }}",
+          }
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      }
+    </script>
+</body>
+</html>
