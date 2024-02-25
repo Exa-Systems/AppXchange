@@ -278,5 +278,7 @@ def appserve():
 def private_ft():
   return render_template("private.html")
 
+# This is a test.
+
 app.register_blueprint(ft)
 app.run(host='0.0.0.0', port=10000, debug=True)
