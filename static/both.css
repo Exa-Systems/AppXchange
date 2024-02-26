@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 20px gray;
+    padding: 10px 20px;
+}
+
+.header h1 {
+    color: black;
+}
+
+.profile-sidebar {
+    display: flex;
+    align-items: center;
+}
+
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #007bff;
+    margin-right: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #FFF;
+}
+h2, h3, p{
+    text-align: center;
+    
+    color: #333;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+}
+
+.btn-upload, .btn-download {
+    width: 100px;
+    height: 40px; /* Set the height to your desired value */
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.btn-file {
+    width: auto;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.btn-upload {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-file:hover, .btn-upload:hover {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+}
+
+.btn-download {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-download:hover {
+    background-color: #1e7e34;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh; /* Adjust the height to your preference */
+    flex-direction: column;
+}
+
+#codeinput, #file-upload {
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 20px; /* Set the height to match the buttons' height */
+}
+
+#upload-form, #download-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.form-group {
+    margin: 0 10px;
+}
+.select input {
+  border-radius: 20px;
+  padding: 10px;
+  color: #000000;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  border-width: 2px;
+  border-color: #3498db;
+  background-color: white;
+  -webkit-appearance: none; /* 크롬 및 사파리용 */
+  -moz-appearance: none; /* 파이어폭스용 */
+  appearance: none; /* 표준 속성 */
+  border: 2px solid #3498db;
+  padding: 8px 15px;
+  cursor: pointer;
+  outline: none;
+}
+.select .first {
+  background-color: #3498db;
+  color: white;
+}
+.select {
+margin-top: 5px;
+margin-left: 5px;
+}
