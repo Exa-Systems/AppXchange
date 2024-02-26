@@ -6,7 +6,7 @@ from flask_cors import CORS, cross_origin
 import json
 
 app = Flask(__name__)
-
+#푸쉬 테스트
 CORS(app)
 
 
