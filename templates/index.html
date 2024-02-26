@@ -4,71 +4,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>AppXchange</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='both.css') }}"
+    <link rel="stylesheet" href="{{ url_for('static', filename='topnav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
 <div class="header">
-    <h1><a style="text-decoration: none;color: white;" href="https://appxchange.onrender.com//">AppXchange</a></h1>
+    <div class="left">
+      <a style="text-decoration: none;" href="https://appxchange.onrender.com//"><img src="{{ url_for('static', filename='logo.png') }}"></a>
+      <div class="menus">
+        <a href="/apps">Apps</a>
+        <a href="/games">Games</a>
+        <a href="/private">FT Private</a>
+      </div>
+    </div>
     <div style=" cursor: pointer;" onclick="location.href='account';" class="profile-sidebar">
         <div class="profile-avatar"></div>
-        <p style="color: white;" id="username">Register</p>
+        <p id="username">Register</p>
     </div>
 </div>
-<div class="select">
-  <input class="first" type="button" value="File Transfer"></input>
-  <input type="button" onclick="location.href='/private';" value="FT Private"></input>
-  <input type="button" onclick="location.href='/apps';" value="Apps"></input>
-  <input type="button" onclick="location.href='/games';" value="Games"></input>
+
+<h2 style="margin-left: 5px;">New Releases</h2>
+  
+<div class="app-container">
+  {% for app in apps %}
+      <div class="app-card" onclick="location.href='/description/{{ app.code }}';">
+          <img src="https://appxchange.onrender.com/static/DB/AppDB/{{ app.code }}/{{ app.image }}" alt="{{ app.name }}" class="app-banner">
+          <div class="app-info">
+              <span class="app-name">{{ app.name }}</span>
+              <span class="app-rating">{{ app.rating }}/5.0</span>
+          </div>
+      </div>
+  {% endfor %}
 </div>
-  <div id="hidden_form_container" style="display:none;"></div>
-<p><i>Try our new <a href="https://appxchange.onrender.com/description/EXACOOL">App Experience</a>!</i><br>You can also download the app through the code <b>"EXACOOL"</b></p>
 
+<h2 style="margin-left: 5px;">Recommended for you</h2>
+
+<div class="app-container">
+  {% for card in recommend %}
+      <div class="app-card" onclick="location.href='/description/{{ card.code }}';">
+          <img src="/static/DB/AppDB/{{ card.code }}/{{ card.image }}" alt="{{ card.name }}" class="app-banner">
+          <div class="app-info">
+              <span class="app-name">{{ card.name }}</span>
+              <span class="app-rating">{{ card.rating }}/5.0</span>
+          </div>
+      </div>
+  {% endfor %}
+</div>
+
+<h2 style="margin-left: 5px;">File Transfer</h2>
 <div class="form-container">
-
-    <p id="alert">If you want to upload file, you have to sign in.</p>
     <form id="upload-form" action="/save" method="post" enctype="multipart/form-data" class="form-group">
         <input class="btn btn-file" type="file" name="file" id="file-upload">
         <input class="btn btn-upload" type="submit" value="Upload">
     </form>
-
     <form id="download-form" action="/files/download" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" class="form-group">
-        <input placeholder="Enter file code" id="codeinput" name="code" type="text"/>
+        <input placeholder="Type 6-letter code to download" id="codeinput" name="code" type="text"/>
         <input class="btn btn-download" type="submit" value="Download"/>
     </form>
 </div>
 
-
+<h2 style="margin-left: 5px;">File sent to you</h2>
+<p>Development in progress</p>
 
 <script>
-    function validateForm() {
-        const code = document.getElementById('codeinput').value;
-        if (code.trim() === "") {
-            alert("Please enter a valid file code.");
-            return false;
-        }
-        return true;
-    }
-
-    function downloadFile (filecode) {
-      var theForm, newInput1, newInput2;
-      // Start by creating a <form>
-      theForm = document.createElement('form');
-      theForm.action = '/files/download';
-      theForm.method = 'post';
-      // Next create the <input>s in the form and give them names and values
-      newInput1 = document.createElement('input');
-      newInput1.type = 'hidden';
-      newInput1.name = 'code';
-      newInput1.value = filecode;
-      // Now put everything together...
-      theForm.appendChild(newInput1);
-      // ...and it to the DOM...
-      document.getElementById('hidden_form_container').appendChild(theForm);
-      // ...and submit it
-      theForm.submit();
-    }
-</script>
-<script>
+  /*
   var message = localStorage.getItem('name');
   const accountname = document.getElementById('username');
   const container = document.getElementById('upload-form');  
@@ -81,6 +80,7 @@
     container.style.display = 'none';
     alert.style.display = 'block';
   }
+  */
 </script>
 </body>
 </html>

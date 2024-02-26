@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+body {
+    font-family: LINESeedKR-Bd;
+    margin: 0;
+    padding: 0;
+}
+
+.left {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center; /* 추가된 속성 */
+}
+
+.menus {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    align-items: center; /* 추가된 속성 */
+}
+
+.menus a {
+    margin-left: 35px;
+    margin-right: 35px;
+    font-size: 14pt;
+    text-decoration: none;
+    color: black;
+}
+
+.left img {
+    width: 70%;
+    padding: 10px;
+}
+
+* {
+    font-family: LINESeedKR-Bd;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 1px 1px 30px gray;
+}
+
+.profile-sidebar {
+    display: flex;
+    align-items: center;
+}
+
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #007bff;
+    margin-right: 10px;
+}

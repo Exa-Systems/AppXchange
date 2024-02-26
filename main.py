@@ -21,7 +21,14 @@ def auth():
 
 @app.route('/')
 def home():
-  return render_template('index.html')
+  f = open('apps.json', 'r')
+  apps = json.loads(f.read())
+  last_four_apps = apps[-4:]
+
+  apps_sorted = sorted(apps, key=lambda x: x['rating'], reverse=True)
+
+  top_four_apps = apps_sorted[:4]
+  return render_template('index.html', apps=last_four_apps, recommend=top_four_apps)
 
 
 @app.route('/rate', methods=['POST'])

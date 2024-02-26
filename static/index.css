@@ -1,35 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff;
-    box-shadow: 5px 5px 20px gray;
-    padding: 10px 20px;
-}
-
-.header h1 {
-    color: black;
-}
-
-.profile-sidebar {
-    display: flex;
-    align-items: center;
-}
-
-.profile-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #007bff;
-    margin-right: 10px;
-}
 
 h1 {
     text-align: center;
@@ -37,8 +5,6 @@ h1 {
     color: #FFF;
 }
 h2, h3, p{
-    text-align: center;
-    
     color: #333;
 }
 
@@ -95,7 +61,14 @@ h2, h3, p{
     justify-content: center;
     align-items: center;
     height: 20vh; /* Adjust the height to your preference */
-    flex-direction: column;
+}
+
+#upload-form {
+    flex: 1;
+}
+
+#download-form {
+    flex: 1;
 }
 
 #codeinput, #file-upload {
@@ -140,4 +113,37 @@ h2, h3, p{
 .select {
 margin-top: 5px;
 margin-left: 5px;
+}
+
+.app-card {
+    width: 22%;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-right: 2.4%;
+    cursor: pointer;
+}
+.app-banner {
+    width: 100%;
+    height: 150px;
+    object-fit: cover; /* 이미지 비율을 유지하면서 요소에 맞춤 */
+}
+.app-info {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; /* 이름과 별점을 양쪽 끝으로 정렬 */
+    align-items: center;
+}
+.app-rating {
+    background-color: #555;
+    padding: 3px 7px;
+    border-radius: 5px;
+}
+.app-container{
+  margin-left: 5px;
+  margin-top: 3px;
+  display: flex;
 }

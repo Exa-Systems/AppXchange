@@ -1,0 +1,32 @@
+.app-card {
+    width: 22%;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-right: 2.4%;
+    cursor: pointer;
+}
+.app-banner {
+    width: 100%;
+    height: 150px;
+    object-fit: cover; /* 이미지 비율을 유지하면서 요소에 맞춤 */
+}
+.app-info {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; /* 이름과 별점을 양쪽 끝으로 정렬 */
+    align-items: center;
+}
+.app-rating {
+    background-color: #555;
+    padding: 3px 7px;
+    border-radius: 5px;
+}
+.app-container{
+  margin-left: 5px;
+  margin-top: 3px;
+  display: flex;
+}
