@@ -168,11 +168,14 @@ def apply():
     return render_template('apply.html')
 
 
-@app.route('/apps', methods=['GET'])
-def apps():
-  f = open('apps.json', 'r')
-  apps = json.loads(f.read())
-  return render_template('apps.html', apps=apps)
+@app.route('/apps/<string:category>', methods=['GET'])
+def apps(category):
+  category_list = ['tools', 'music', 'games', 'health', 'education', 'finance', 'graphic', 'weather', 'news', 'books', 'business', 'shopping', 'social', 'sports', 'travel']
+  if category in category_list:
+    f = open('apps.json', 'r')
+    apps = json.loads(f.read())
+    apps = [item for item in apps if item['category'] == category]
+    return render_template('apps.html', apps=apps, category=category)
 
 
 # I'll be back some time later

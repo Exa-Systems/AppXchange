@@ -30,3 +30,30 @@
   margin-top: 3px;
   display: flex;
 }
+
+.select input {
+    border-radius: 20px;
+    padding: 10px;
+    color: #000000;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    border-width: 2px;
+    border-color: #3498db;
+    background-color: white;
+    -webkit-appearance: none; /* 크롬 및 사파리용 */
+    -moz-appearance: none; /* 파이어폭스용 */
+    appearance: none; /* 표준 속성 */
+    border: 2px solid #3498db;
+    padding: 8px 15px;
+    cursor: pointer;
+    outline: none;
+  }
+.select .first {
+    background-color: #3498db;
+    color: white;
+}
+.select {
+  margin-top: 5px;
+  margin-left: 5px;
+}
