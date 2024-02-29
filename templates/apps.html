@@ -43,7 +43,7 @@
   <div class="app-container">
       {% for app in apps %}
           <div class="app-card" onclick="location.href='/description/{{ app.code }}';">
-              <img src="https://appxchange.onrender.com/static/DB/AppDB/{{ app.code }}/{{ app.image }}" alt="{{ app.name }}" class="app-banner">
+              <img src="/static/DB/AppDB/{{ app.code }}/{{ app.image }}" alt="{{ app.name }}" class="app-banner">
               <div class="app-info">
                   <span class="app-name">{{ app.name }}</span>
                   <span class="app-rating">{{ app.rating }}/5.0</span>
