@@ -1,1 +1,159 @@
-{{ message }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppXchange</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='topnav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='description.css') }}">
+</head>
+<body>
+<div class="header">
+    <div class="left">
+      <a style="text-decoration: none;" href="/"><img src="{{ url_for('static', filename='logo.png') }}"></a>
+      <div class="menus">
+        <a href="/apps/tools">Apps</a>
+        <a href="/games">Games</a>
+        <a href="/private">FT Private</a>
+      </div>
+    </div>
+    <div style=" cursor: pointer;" onclick="location.href='account';" class="profile-sidebar">
+        <div class="profile-avatar"></div>
+        <p id="username">Register</p>
+    </div>
+</div>
+    <div id="container">
+      <form>
+        <div id="header">
+            <img id="logo" src="/static/logo/{{ logo }}" alt="프로그램 로고">
+            <div id="info">
+                <h1>{{ appname }}</h1>
+                <div class="rate">
+                  <span style="width: {{ rating }}%;"></span>
+                </div>
+              
+            </div>
+            <button id="downloadButton" onclick="downloadFile('{{ appcode }}');">Download</button>
+            <div id="hidden_form_container" style="display:none;"></div>
+          
+        </div>
+
+        <div class="image-container">
+        
+          <img class="image" src="/static/represent/{{ image }}_1.png" alt="이미지 1">
+          <img class="image" src="/static/represent/{{ image }}_2.png" alt="이미지 2">
+
+          <div class="btn btn-left" onclick="changeImage(-1)">&#8249;</div>
+          <div class="btn btn-right" onclick="changeImage(1)">&#8250;</div>
+        </div>
+        <h2>Description</h2>
+        <div id="description">
+            <p>{{ explain }}</p>
+        </div>
+        <!--
+        <div id="companyInfo">
+            <p>회사 이름</p>
+            <a id="companyButton" href="http://www.companywebsite.com" target="_blank">회사 홈페이지 바로가기</a>
+        </div>
+        -->
+      </form>
+
+      <center>
+        <h4>If you like the app, please rate it</h4>
+        <div class="starpoint_wrap">
+          <div class="starpoint_box">
+            <label for="starpoint_1" class="label_star" title="0.5"><span class="blind">0.5점</span></label>
+            <label for="starpoint_2" class="label_star" title="1"><span class="blind">1점</span></label>
+            <label for="starpoint_3" class="label_star" title="1.5"><span class="blind">1.5점</span></label>
+            <label for="starpoint_4" class="label_star" title="2"><span class="blind">2점</span></label>
+            <label for="starpoint_5" class="label_star" title="2.5"><span class="blind">2.5점</span></label>
+            <label for="starpoint_6" class="label_star" title="3"><span class="blind">3점</span></label>
+            <label for="starpoint_7" class="label_star" title="3.5"><span class="blind">3.5점</span></label>
+            <label for="starpoint_8" class="label_star" title="4"><span class="blind">4점</span></label>
+            <label for="starpoint_9" class="label_star" title="4.5"><span class="blind">4.5점</span></label>
+            <label for="starpoint_10" class="label_star" title="5"><span class="blind">5점</span></label>
+            <input type="radio" name="starpoint" id="starpoint_1" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_2" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_3" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_4" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_5" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_6" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_7" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_8" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_9" class="star_radio">
+            <input type="radio" name="starpoint" id="starpoint_10" class="star_radio">
+            <span class="starpoint_bg"></span>
+          </div>
+        </div>
+        <div style="margin-top: 10px;">
+          <button id="downloadButton" onclick="rate();">Rate</button>
+        </div>
+      </center>
+    </div>
+
+    <script>
+      let currentImageIndex = 0;
+      const images = document.getElementsByClassName('image');
+      images[currentImageIndex].style.display = 'block';
+      function changeImage(n) {
+          currentImageIndex += n;
+
+          if (currentImageIndex < 0) {
+              currentImageIndex = images.length - 1;
+          } else if (currentImageIndex >= images.length) {
+              currentImageIndex = 0;
+          }
+
+          for (let i = 0; i < images.length; i++) {
+              images[i].style.display = 'none';
+          }
+
+          images[currentImageIndex].style.display = 'block';
+      }
+      function downloadFile (filecode) {
+        var theForm, newInput1, newInput2;
+        // Start by creating a <form>
+        theForm = document.createElement('form');
+        theForm.action = '/files/download';
+        theForm.method = 'post';
+        // Next create the <input>s in the form and give them names and values
+        newInput1 = document.createElement('input');
+        newInput1.type = 'hidden';
+        newInput1.name = 'code';
+        newInput1.value = filecode;
+        // Now put everything together...
+        theForm.appendChild(newInput1);
+        // ...and it to the DOM...
+        document.getElementById('hidden_form_container').appendChild(theForm);
+        // ...and submit it
+        theForm.submit();
+      }
+    </script>
+    <script>
+        
+      var message = localStorage.getItem('name');
+      const accountname = document.getElementById('username');
+      if (message) {
+        accountname.textContent = message;
+      }
+
+      function rate() {
+        const div = document.getElementsByClassName('starpoint_bg')[0];
+        let rate = div.offsetWidth / 20
+        fetch('https://appxchange.onrender.com/rate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'rating' : rate,
+            'code' : "{{ appcode }}",
+          }
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      }
+    </script>
+</body>
+</html>
