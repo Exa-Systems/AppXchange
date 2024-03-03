@@ -271,11 +271,17 @@ def download():
 
 @app.route('/save', methods=['POST'])
 def save():
+  SaveingErrormessage = []
   code = sendutil.genCode()
   os.makedirs(f'VMDrive/{code}/')
   file = request.files['file']
-  file.save(f'VMDrive/{code}/{file.filename}')
-  return render_template('dwn.html', code=code)
+  size = os.path.getsize(file)
+  if size >  2147483648:
+    SaveingErrormessage.append("file size overflow")
+    return SaveingErrormessage
+  else:
+    file.save(f'VMDrive/{code}/{file.filename}')
+    return render_template('dwn.html', code=code)
 
 
 @app.route('/protocread', methods=['POST'])
@@ -312,4 +318,3 @@ def test():
 
 app.register_blueprint(ft)
 app.run(host='0.0.0.0', port=10000, debug=True)
-
