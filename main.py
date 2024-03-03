@@ -179,6 +179,7 @@ def apps(category):
 
 
 # I'll be back some time later
+# kang ji oh : where are you
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
   if request.method == "GET":
@@ -197,15 +198,32 @@ def signin():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+  errormessage = []
   if request.method == "GET":
     return render_template("auth.html")
   else:
-    authutil.storeUserPW(request.form["username"], request.form["password"],
+    RecentUserData = json.loads("/auth.json")
+    for i in range(0, RecentUserData.length):
+      if RecentUserData[i]["username"] == request.form["username"]:
+         errormessage.append("username duplicated")
+      
+      if RecentUserData[i]["password"] == request.form["password"]:
+        errormessage.append("password duplicated")
+        
+      if RecentUserData[i]["email"] == request.form["email"]:
+         errormessage.append("email duplicated")
+         
+    if errormessage == []:
+      authutil.storeUserPW(request.form["username"], request.form["password"],
                          request.form["email"])
-    return render_template('thank.html',
-                           why="Registration",
-                           name1=request.form["username"],
-                           name2=request.form["username"])
+      return render_template('thank.html',
+                            why="Registration",
+                            name1=request.form["username"],
+                            name2=request.form["username"])
+    else:
+      return errormessage
+      
+    
 
 
 ft = Blueprint('files', __name__, url_prefix='/files')
@@ -294,3 +312,4 @@ def test():
 
 app.register_blueprint(ft)
 app.run(host='0.0.0.0', port=10000, debug=True)
+
