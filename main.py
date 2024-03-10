@@ -6,6 +6,7 @@ from flask_cors import CORS, cross_origin
 import json
 
 app = Flask(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 0.5 * 1024 * 1024 * 1024 #0.5 기가 업로드 지원
 #푸쉬 테스트
 CORS(app)
 
@@ -271,17 +272,17 @@ def download():
 
 @app.route('/save', methods=['POST'])
 def save():
-  SaveingErrormessage = []
+
   code = sendutil.genCode()
   os.makedirs(f'VMDrive/{code}/')
   file = request.files['file']
-  size = os.path.getsize(file)
-  if size >  2147483648:
-    SaveingErrormessage.append("file size overflow")
-    return SaveingErrormessage
-  else:
+  try:
     file.save(f'VMDrive/{code}/{file.filename}')
     return render_template('dwn.html', code=code)
+  except IsADirectoryError:
+    return render_template("message.html", message="No file selected, or blank file name.")
+
+  
 
 
 @app.route('/protocread', methods=['POST'])
@@ -315,6 +316,11 @@ def private_ft():
 @app.route('/test', methods=['GET'])
 def test():
   return render_template("test.html")
+
+@app.errorhandler(413)
+def request_entity_too_large(error):
+    return render_template("message.html", message="The file size is too large. (max is 512 MB)")
+
 
 app.register_blueprint(ft)
 app.run(host='0.0.0.0', port=10000, debug=True)
